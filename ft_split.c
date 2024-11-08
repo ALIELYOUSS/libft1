@@ -6,34 +6,18 @@
 /*   By: alel-you <alel-you@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 22:29:28 by alel-you          #+#    #+#             */
-/*   Updated: 2024/11/05 23:36:54 by alel-you         ###   ########.fr       */
+/*   Updated: 2024/11/06 20:59:00 by alel-you         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-// struct split
-// {
-// 	unsigned int words;
-// 	unsigned int len;
-// 	unsigned int td;
-// 	unsigned int indx;
-// 	unsigned int x;
-
-// } typdef index;
-// static int	ft_is(char a, char b)
-// {
-// 	if (a != b)
-// 		return (1);
-// 	else
-// 		return (0);
-// }
 
 static int	ft_words_count(char *s, char c)
 {
 	int	i;
 	int	count;
 
-	if (!s || c)
+	if (!s || !c)
 		return (0);
 	i = 0;
 	count = 0;
@@ -45,6 +29,7 @@ static int	ft_words_count(char *s, char c)
 			count++;
 		i++;
 	}
+	printf("%d\n", count);
 	return (count);
 }
 
@@ -53,6 +38,8 @@ static int	ft_lenght(char *s, char c)
 	int	i;
 	int	len;
 
+	if (!s)
+		return (0);
 	i = 0;
 	len = 0;
 	while (s[i] && s[i] == c)
@@ -65,6 +52,7 @@ static int	ft_lenght(char *s, char c)
 			len++;
 		i++;
 	}
+	printf("len = %d\n", len);
 	return (len);
 }
 
@@ -78,45 +66,40 @@ static char	**ft_free(char **word, unsigned int i)
 
 char	**ft_split(char *s, char c)
 {
-	unsigned int	i;
-	unsigned int	x;
-	unsigned int	n;
-	unsigned int	len;
-	unsigned int	words;
-	char			**sp;
+	t_var	p;
 
-	i = 0;
-	len = 0;
-	n = 0;
-	words = ft_words_count(s, c);
-	sp = (char **)malloc(sizeof(char *) * words + 1);
-	if (!sp)
+	p.i = 0;
+	p.len = 0;
+	p.n = 0;
+	p.words = ft_words_count(s, c);
+	p.sp = (char **)malloc(sizeof(char *) * (p.words + 1));
+	if (!p.sp)
 		return (NULL);
-	while (i < words)
+	while (p.i < p.words)
 	{
-		x = 0;
-		len = ft_lenght(s + n, c);
-		sp[i] = (char *)malloc(len + 1);
-		if (!sp[i])
-			return (ft_free(sp, i));
-		while (s[n] == c)
-			n++;
-		while (s[n] != c)
-			sp[i][x++] = s[n++];
-		sp[i][x] = '\0';
-		i++;
+		p.x = 0;
+		p.len = ft_lenght(s + p.n, c);
+		p.sp[p.i] = (char *)malloc(p.len + 1);
+		if (!p.sp[p.i])
+			return (ft_free(p.sp, p.i));
+		while (s[p.n] == c)
+			p.n++;
+		while (s[p.n] != c)
+			p.sp[p.i][p.x++] = s[p.n++];
+		p.sp[p.i][p.x] = '\0';
+		p.i++;
 	}
-	sp[i] = (NULL);
-	return (sp);
+	p.sp[p.i] = (NULL);
+	return (p.sp);
 }
 
-// int main()
-// {
-// 	char **sp = ft_split(NULL, ' ');
-// 	int i = 0;
-// 	while ( i < ft_words_count(NULL , ' '))
-// 	{
-// 		printf("%s\n", sp[i]);
-// 		i++;
-// 	}
-// }
+//int main(int ac, char **av)
+//{
+//	int i = 0;
+//	char **n = ft_split(av[1], ' ');
+//	while (n[i])
+//	{
+//		printf("%s\n", n[i]);
+//		i++;
+//	}
+//}

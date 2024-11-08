@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,22 +6,22 @@
 /*   By: alel-you <alel-you@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:40:27 by alel-you          #+#    #+#             */
-/*   Updated: 2024/10/22 20:40:28 by alel-you         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:51:37 by alel-you         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
- 
- #include "libft.h"
 
-char*   ft_strcpy(char *dest, char const *src)
+#include "libft.h"
+
+char	*ft_strcpy(char *dest, char const *src)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (src[i])
-    {
-        dest[i] = src[i];
-        i++;
-    }
-    dest[i] = '\0';
-    return dest;
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

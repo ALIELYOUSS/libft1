@@ -6,7 +6,7 @@
 /*   By: alel-you <alel-you@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 22:53:56 by alel-you          #+#    #+#             */
-/*   Updated: 2024/11/05 23:35:35 by alel-you         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:58:00 by alel-you         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ int	ft_atoi(char const *str)
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-')
+	{
 		sign *= -1;
-	i++;
+		i++;
+	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		tmp = (tmp * 10) + str[i] - '0';
-		if (result > tmp && sign == 1)
-			return (-1);
-		else if (result > tmp && sign == -1)
-			return (0);
 		result = tmp;
 		i++;
 	}

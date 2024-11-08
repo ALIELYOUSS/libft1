@@ -6,7 +6,7 @@
 /*   By: alel-you <alel-you@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:00:47 by alel-you          #+#    #+#             */
-/*   Updated: 2024/11/04 12:58:47 by alel-you         ###   ########.fr       */
+/*   Updated: 2024/11/06 17:44:26 by alel-you         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_lstsize(t_list *lst)
 {
 	int		i;
 	t_list	*current_lst;
-	
+
 	i = 0;
 	current_lst = lst;
 	while (current_lst)

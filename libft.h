@@ -6,7 +6,7 @@
 /*   By: alel-you <alel-you@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 19:03:54 by alel-you          #+#    #+#             */
-/*   Updated: 2024/11/05 23:33:51 by alel-you         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:54:32 by alel-you         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,24 @@
 # include <stdlib.h>
 # include <string.h>
 # include <ctype.h>
+# include <fcntl.h>
+#include <limits.h>
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_variables
+{
+	unsigned int	i;
+	unsigned int	x;
+	unsigned int	n;
+	unsigned int	len;
+	unsigned int	words;
+	char			**sp;
+}	t_var;
 
 int		ft_lstsize(t_list *lst);
 int		ft_tolower(int c);
@@ -48,10 +60,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_itoa(int a);
 char	**ft_split(char *s, char c);
-void	ft_putchar_fd(char c, int fd);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 char	*ft_strstr(char *str, char *to_find);
@@ -62,8 +75,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 size_t	ft_strlen(char const *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-// void 	ft_putnbr_fd(int n, int fd);
+
 #endif

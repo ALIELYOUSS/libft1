@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,12 +6,16 @@
 /*   By: alel-you <alel-you@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 08:22:22 by alel-you          #+#    #+#             */
-/*   Updated: 2024/11/02 08:22:23 by alel-you         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:45:42 by alel-you         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-void ft_putstr_fd(char *s, int fd)
+
+void	ft_putstr_fd(char *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	if (*s)
+	{
+		write(fd, s, ft_strlen(s));
+	}
 }
