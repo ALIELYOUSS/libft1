@@ -6,7 +6,7 @@
 /*   By: alel-you <alel-you@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:03:06 by alel-you          #+#    #+#             */
-/*   Updated: 2024/11/07 13:41:11 by alel-you         ###   ########.fr       */
+/*   Updated: 2024/11/08 20:37:24 by alel-you         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ static long	ft_check_negg(int a)
 {
 	long	tmp;
 
+	if (a == -2147483648)
+	{
+		tmp = a;
+		tmp *= -1;
+		return (tmp);
+	}
 	if (a < 0)
 		a *= -1;
 	tmp = a;
@@ -46,9 +52,9 @@ static int	ft_itoa_len(int a)
 
 char	*ft_itoaaa(int a)
 {
+	char	*str;
 	int		len;
 	long	tmp;		
-	char	*str;
 
 	tmp = ft_check_negg(a);
 	len = ft_itoa_len(a) + 1;

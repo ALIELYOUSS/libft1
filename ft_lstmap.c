@@ -6,37 +6,39 @@
 /*   By: alel-you <alel-you@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:22:19 by alel-you          #+#    #+#             */
-/*   Updated: 2024/11/06 17:48:55 by alel-you         ###   ########.fr       */
+/*   Updated: 2024/11/09 02:14:44 by alel-you         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_list;
+	t_list	*new;
 	t_list	*new_node;
 
-	new_node = NULL;
+	if (!lst || !f)
+		return (NULL);
+	new = NULL;
 	while (lst)
 	{
-		f(lst->content);
-		if (!f(lst->content))
-			del(f(lst->content));
-		else
+		new_node = ft_lstnew(f(lst->content));
+		if (!new_node)
 		{
-			new_list = ft_lstnew("0");
-			ft_lstadd_back(&lst, new_list);
-			lst = lst->next;
-			if (!new_list)
-				free(new_list);
+			del(new_node->content);
+			return (NULL);
 		}
+		if (!new)
+		{
+			new = new_node;
+			lst = lst->next; 
+			continue ;
+		}
+		ft_lstadd_back(&new, new_node);
 		lst = lst->next;
 	}
-	free(lst);
-	return (new_list);
+	return (new);
 }
-// int miain()
-// {
-// 	t_list list = ft_lstmap();
-// }
+
+

@@ -6,7 +6,7 @@
 /*   By: alel-you <alel-you@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:10:13 by alel-you          #+#    #+#             */
-/*   Updated: 2024/11/06 17:50:25 by alel-you         ###   ########.fr       */
+/*   Updated: 2024/11/08 23:24:49 by alel-you         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstlast(t_list *lst)
 	last_node = lst;
 	if (!lst)
 		return (NULL);
-	while (last_node)
+	while (last_node->next)
 	{
 		last_node = last_node->next;
 	}
